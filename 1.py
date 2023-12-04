@@ -87,6 +87,19 @@ def ChecarValorApuesta(lista_jugadores):
             lista_jugadores.pop(i)
     return lista_jugadores
 
+def CantidadApuesta(lista_jugadores):
+    cantidad = int(input("Cuanto van a apostar?: "))
+    for i in range(lista_jugadores):
+        if lista_jugadores[i][1] < cantidad:
+            print(f"no se puede apostar esa cantidad, debido a que el jugador {lista_jugadores[i][0]} no posee creditos suficiente")
+            respuesta = int(input("1 para expulsar el jugador; 2 para cambiar la apuesta"))
+            if respuesta == 1:
+                lista_jugadores.pop(i)
+            if respuesta == 2:
+                print(f"el valor minimo que se puede apostar es: {lista_jugadores[i][1]}")
+                cantidad = int(input("Cuanto se va a apostar? "))
+    return cantidad
+
 def VerificarFrecuencia(cubilete):
     valores = []
     for carta in cubilete:
